@@ -1,0 +1,9 @@
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body class="site">
+    <main class="container">
+      {{ block "main" . }}{{ end }}
+      <footer class="footer">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</footer>
+    </main>
+  </body>
+</html>

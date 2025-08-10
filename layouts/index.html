@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <section class="profile" aria-label="profile">
+    <div class="avatar">
+      {{ if .Site.Params.avatar }}
+        <img src="{{ .Site.Params.avatar }}" alt="Avatar" />
+      {{ else }}
+        {{ with .Site.Params.avatar_initials }}{{ . }}{{ else }}JS{{ end }}
+      {{ end }}
+    </div>
+    <div>
+      <div class="title">{{ .Site.Title }}</div>
+      {{ with .Site.Params.tagline }}<div class="subtitle">{{ . }}</div>{{ end }}
+    </div>
+  </section>
+  <section class="links" aria-label="links">
+    {{ $links := site.Data.links }}
+    {{ range $links }}
+      <a class="link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <span class="icon">{{ partial "icons.html" .icon }}</span>
+        <div>
+          <div class="label">{{ .name }}</div>
+          {{ with .desc }}<div class="desc">{{ . }}</div>{{ end }}
+        </div>
+      </a>
+    {{ end }}
+  </section>
+{{ end }}
