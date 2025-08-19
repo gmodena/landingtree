@@ -15,7 +15,7 @@
   <section class="links" aria-label="links">
     {{ $links := site.Data.links }}
     {{ range $links }}
-      <a class="link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+    <a class="link" href="{{ .url }}" target="_blank" rel="{{ if eq .name "Mastodon" }}me{{ else }}noopener noreferrer{{ end }}">
         <span class="icon">{{ partial "icons.html" .icon }}</span>
         <div>
           <div class="label">{{ .name }}</div>
